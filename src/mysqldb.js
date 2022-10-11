@@ -14,3 +14,5 @@ export const db = createConnection({
     database:db_name,
     port:db_port
 });
+
+db.connect()
