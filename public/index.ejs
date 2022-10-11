@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Personajes de videojuegos</title>
 </head>
 <body>
     <table>
@@ -12,10 +12,17 @@
             <tr>
                 <td>Personaje</td>
                 <td>Franqucia</td>
+                <td>Año de nacimiento</td>
             </tr>
         </thead>
         <tbody>
-            <%=  %>
+            <% table.forEach((id)=>{ %>
+                <tr>
+                    <td><%= id.name %></td>
+                    <td><%= id.franchise %></td>
+                    <td><%= id.year %></td>
+                </tr>
+            <% })%>
         </tbody>
     </table>
 </body>
