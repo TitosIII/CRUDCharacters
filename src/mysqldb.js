@@ -1,4 +1,5 @@
 import { createConnection } from "mysql2";
+import parseDatabaseUrl from "parse-database-url";
 import{
     db_host,
     db_name,
@@ -7,12 +8,10 @@ import{
     db_user
 } from "./config.js"
 
-export const db = createConnection({
-    host:db_host,
-    user:db_user,
-    password:db_password,
-    database:db_name,
-    port:db_port
-});
+import { dbconfig } from "./config.js";
+
+const dbcon = parseDatabaseUrl(dbconfig)
+
+export const db = createConnection(dbcon);
 
 db.connect()
