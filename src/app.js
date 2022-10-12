@@ -6,6 +6,8 @@ import {db} from "./mysqldb.js"
 const app = express();
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
 
 app.get("/", (req, res) =>{
     db.query("select * from characters;", (error, table)=>{
@@ -21,8 +23,17 @@ app.get("/add", (req, res) =>{
     res.render("../public/create.ejs",{var:"hola"})
 });
 
-app.get("/addtodb", (req,res)=>{
-    db.query(`insert into characters values("${req.body.name}","${req.body.franchise}","${req.body.name}");`)
+app.post("/savedata", (req,res)=>{
+    const name = req.body.name;
+    const franchise = req.body.franchise;
+    const year = req.body.year;
+    db.query(`insert into characters values("${name}","${franchise}","${year}");`,(error, table)=>{
+        if(error){
+            console.log(error)
+        }else{
+            res.redirect("/")
+        }
+    })
 })
 
 app.listen(port, ()=>{
