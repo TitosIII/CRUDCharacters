@@ -17,6 +17,14 @@ app.get("/", (req, res) =>{
     })
 });
 
+app.get("/add", (req, res) =>{
+    res.render("../public/create.ejs",{var:"hola"})
+});
+
+app.get("/addtodb", (req,res)=>{
+    db.query(`insert into characters values("${req.body.name}","${req.body.franchise}","${req.body.name}");`)
+})
+
 app.listen(port, ()=>{
     console.log(`Escuchando desde el puerto: ${port}`)
 })
