@@ -17,7 +17,7 @@
                 <tr  class="table table-dark">
                     <th scope="col" align="center">Personaje</th>
                     <th scope="col" align="center">Franqucia</th>
-                    <th scope="col" align="center">Año de nacimiento</th>
+                    <th scope="col" align="center">Año de creación</th>
                     <th scope="col" align="center">Opciones</th>
                 </tr>
             </thead>
@@ -34,8 +34,16 @@
                             <%= name.year %>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary">Editar</button>
-                            <button type="button" class="btn btn-danger">Eliminar</button>
+                            <form action="/edit" method="post">
+                                <input type="hidden" name="name" value="<%=name.name %>">
+                                <input type="hidden" name="franchise" value="<%=name.franchise %>">
+                                <input type="hidden" name="year" value="<%=name.year %>">
+                                <button type="submmit" class="btn btn-light">Editar</button>
+                            </form>
+                            <form action="/delete" method="post">
+                                <input type="hidden" name="name" value="<%=name.name %>">
+                                <button type="submmit" class="btn btn-danger">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                     <% })%>
