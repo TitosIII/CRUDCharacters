@@ -23,6 +23,10 @@ app.get("/add", (req, res) =>{
     res.render("../public/create.ejs",{var:"hola"})
 });
 
+app.get("/validate.js", (req, rea) =>{
+    res.redirect("..//public/validate.js")
+})
+
 app.post("/edit", (req, res) =>{
     res.render("../public/edit.ejs",{data:req})
 });

@@ -12,19 +12,45 @@
         <form action="/editdata" method="post">
             <div class="mb-3">
               <label class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="name" name="name" value="<%=data.body.name%>">
+              <input type="text" class="form-control" id="name" name="name" value="<%=data.body.name%>" onkeyup="this.value=NumText(this.value)" required>
             <div class="mb-3">
               <label class="form-label">Franquicia</label>
-              <input type="text" class="form-control" id="franchise" name="franchise" value="<%=data.body.franchise%>">
+              <input type="text" class="form-control" id="franchise" name="franchise" value="<%=data.body.franchise%>" onkeyup="this.value=NumText(this.value)" required>
             </div>
             <div class="mb-3">
               <label class="form-label">Año de creación</label>
-              <input type="text" class="form-control" id="year" name="year" value="<%=data.body.year%>">
+              <input type="text" class="form-control" id="year" name="year" value="<%=data.body.year%>" onkeyup="this.value=Numeros(this.value)" required>
             </div>
             <input type="hidden" name="oldname" value="<%=data.body.name%>">
             <button type="submit" class="btn btn-primary">Editar</button>
             <a href="/" type="submit" class="btn btn-secondary">Cancelar</a>
           </form>
     </div>
+    <script>
+      function NumText(string) {//solo letras y numeros
+        var out = '';
+        //Se añaden las letras validas
+        var filtro = 'abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890';//Caracteres validos
+  
+        for (var i = 0; i < string.length; i++)
+          if (filtro.indexOf(string.charAt(i)) != -1)
+            out += string.charAt(i);
+        return out;
+      }
+  
+      function Numeros(string) {//Solo numeros
+        var out = '';
+        var filtro = '1234567890';//Caracteres validos
+  
+        //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+        for (var i = 0; i < string.length; i++)
+          if (filtro.indexOf(string.charAt(i)) != -1)
+            //Se añaden a la salida los caracteres validos
+            out += string.charAt(i);
+  
+        //Retornar valor filtrado
+        return out;
+      } 
+    </script>
 </body>
 </html>
