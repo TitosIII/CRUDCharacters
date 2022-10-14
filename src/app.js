@@ -82,6 +82,8 @@ app.post("/deletedata", (req,res)=>{
     })
 })
 
-app.listen(port, ()=>{
+const puerta = process.env.port || 3000
+
+app.listen(puerta, ()=>{
     console.log(`Escuchando desde el puerto: ${port}`)
 })
